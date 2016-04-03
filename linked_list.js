@@ -65,8 +65,28 @@
     }
   },
   linkedList.prototype.search = function(val) {
-    // Return given node if exists in list; returns null
-
+    // Return given node if exists in list; else returns null
+    try {
+      if (typeof val === 'undefined') {
+        throw "ValueError: Please enter a value for the node.";
+      } else {
+        this.current = this.head;
+        while (this.current.next !== null) {
+          if (this.current.val === val) {
+            return this.current;
+          } else {
+            this.current = this.current.next;
+          }
+        }
+        if (this.current.val === val) {
+          return this.current;
+        } else {
+          return false;
+        }
+      }
+    } catch (e) {
+      return "There was an error: \n" + e;
+    }
   },
   linkedList.prototype.display = function() {
     // Return the linked list as a string of values
