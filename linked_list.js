@@ -65,7 +65,6 @@
   }
 
   linkedList.prototype.pop = function() {
-    // Remove the first node from the head of the list; return node val
     try {
       this.current = this.head;
       this.head = this.head.next;
@@ -77,14 +76,12 @@
   }
 
   linkedList.prototype.search = function(val) {
-    // Return given node if exists in list; else returns null
     try {
       if (typeof val === 'undefined') {
         throw "ValueError: Please enter a value for the node.";
       } else {
         this.current = this.head;
-        while (this.current.next !== null) {
-          // refactor this to this.current !== null; get rid of final if/else
+        while (this.current.next) {
           if (this.current.val === val) {
             return this.current;
           } else {
@@ -103,8 +100,13 @@
   }
 
   linkedList.prototype.display = function() {
-    // Return the linked list as a string of values
-    console.log(this);
+    var nodes = [];
+    this.current = this.head;
+    for (var i = this.length; i > 0; i--) {
+      nodes.push(this.current.val);
+      this.current = this.current.next;
+    }
+    return nodes;
   }
 
   module.linkedList = linkedList;
