@@ -28,7 +28,30 @@
   },
   linkedList.prototype.remove = function(val) {
     // Remove given node from list; return null
-
+    try {
+      if (typeof val === 'undefined') {
+        throw "ValueError: Please enter a value for the node.";
+      } else {
+        this.current = this.head;
+        if (this.current.val === val) {
+          console.log('first');
+          this.head = this.current.next;
+          this.length -=1;
+          return;
+        } else if (this.current.val !== val){
+          console.log('else if');
+          this.current = this.current.next;
+          for (var i = this.length - 1; i > 0; i--) {
+            // Recursive solution?
+          }
+        } else {
+          console.log('else');
+          return "Node does not exist in list.";
+        }
+      }
+    } catch (e) {
+      return 'There was an error \n' + e;
+    }
   },
   linkedList.prototype.pop = function() {
     // Remove the first node from the head of the list; return node val
