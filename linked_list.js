@@ -1,9 +1,14 @@
 (function(module) {
-  // Stretch - take an array of values and create list.
-  function linkedList() {
+  function linkedList(iterable) {
     this.current = null;
     this.head = null;
     this.length = null;
+
+    if (iterable) {
+      iterable.forEach(function(idx) {
+        this.insert(idx);
+      }, this)
+    }
   }
 
   linkedList.prototype.size = function() {
@@ -19,11 +24,9 @@
   }
 
   linkedList.prototype.insert = function(val) {
-    // Insert new node at the head of the list
     try {
       if (typeof val === 'undefined') {
         throw "ValueError: Please enter a value for the node.";
-        // use this.search to validate if already exists; throw error if true
       } else {
         this.head = new Node(val, this.head);
         this.length += 1;
