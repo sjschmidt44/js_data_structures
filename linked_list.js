@@ -1,7 +1,3 @@
-// node and list class
-// methods:
-//   size, search, display, remove insert pop
-
 (function(module) {
   // Stretch - take an array of values and create list.
   function linkedList() {
@@ -9,14 +5,25 @@
     this.head = null;
     this.length = null;
   }
+
   linkedList.prototype.size = function() {
-    return 'The Linked List is ' + this.length;
+    try {
+      if (this.length === null) {
+        throw "IndexError: There are no nodes in the list.";
+      } else {
+        return 'The Linked List is ' + this.length;
+      }
+    } catch (e) {
+      return "There was an error: " + e;
+    }
   }
+
   linkedList.prototype.insert = function(val) {
     // Insert new node at the head of the list
     try {
       if (typeof val === 'undefined') {
         throw "ValueError: Please enter a value for the node.";
+        // use this.search to validate if already exists; throw error if true
       } else {
         this.head = new Node(val, this.head);
         this.length += 1;
@@ -25,34 +32,38 @@
     } catch (e) {
       return "There was an error: \n" + e;
     }
-  },
+  }
+
   linkedList.prototype.remove = function(val) {
-    // Remove given node from list; return null
     try {
       if (typeof val === 'undefined') {
         throw "ValueError: Please enter a value for the node.";
+      } else if (this.search(val) === false){
+        throw "ValueError: That node does not exist in the list.";
       } else {
         this.current = this.head;
-        if (this.current.val === val) {
-          console.log('first');
+        if (this.head.val === val) {
           this.head = this.current.next;
-          this.length -=1;
-          return;
-        } else if (this.current.val !== val){
-          console.log('else if');
-          this.current = this.current.next;
-          for (var i = this.length - 1; i > 0; i--) {
-            // Recursive solution?
-          }
+          this.current = null;
+          this.length -= 1;
+          return this.current;
         } else {
-          console.log('else');
-          return "Node does not exist in list.";
+          while (this.current.next) {
+            if (this.current.next.val === val) {
+              this.current.next = this.current.next.next;
+              this.length -= 1;
+              return null;
+            } else {
+              this.current = this.current.next;
+            }
+          }
         }
       }
     } catch (e) {
       return 'There was an error \n' + e;
     }
-  },
+  }
+
   linkedList.prototype.pop = function() {
     // Remove the first node from the head of the list; return node val
     try {
@@ -63,7 +74,8 @@
     } catch (e) {
       return "There was an error: \n" + e;
     }
-  },
+  }
+
   linkedList.prototype.search = function(val) {
     // Return given node if exists in list; else returns null
     try {
@@ -72,6 +84,7 @@
       } else {
         this.current = this.head;
         while (this.current.next !== null) {
+          // refactor this to this.current !== null; get rid of final if/else
           if (this.current.val === val) {
             return this.current;
           } else {
@@ -87,10 +100,11 @@
     } catch (e) {
       return "There was an error: \n" + e;
     }
-  },
+  }
+
   linkedList.prototype.display = function() {
     // Return the linked list as a string of values
-
+    console.log(this);
   }
 
   module.linkedList = linkedList;
