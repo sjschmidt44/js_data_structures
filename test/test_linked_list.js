@@ -108,7 +108,6 @@ describe('single Linked List', () => {
   describe('display()', () => {
     let ll = new LinkedList([24, 43, 5]);
     it('should return [5, 43, 24]', () => {
-      console.log(typeof ll.display());
       expect(ll.display()).to.equal('5,43,24');
     })
   });
