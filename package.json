@@ -4,15 +4,16 @@
   "description": "Basic Data Structures and Algorithms in Vanilla Javascript",
   "main": "index.html",
   "directories": {
-    "test": "tests"
+    "test": "test"
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "^2.4.5"
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
   },
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Scott Schmidt",
+  "license": "MIT"
 }
