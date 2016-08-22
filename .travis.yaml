@@ -1,6 +1,0 @@
-languages: node_js
-node_js:
-  - "4"
-before_install:
-  - "npm install -g mocha"
-  - "npm install chai"
