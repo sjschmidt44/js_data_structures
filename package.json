@@ -2,7 +2,7 @@
   "name": "data-structures",
   "version": "1.0.0",
   "description": "Basic Data Structures and Algorithms in Vanilla Javascript",
-  "main": "index.html",
+  "main": "./lib/node.js",
   "directories": {
     "test": "test"
   },
