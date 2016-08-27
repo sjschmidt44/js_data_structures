@@ -63,10 +63,13 @@ describe('DoubleLinked()', () => {
   });
   describe('pop()', () => {
     it('should remove a value at the head of the list', () => {
-
+      dl = new DoubleLinked([2, 4, 6]);
+      expect(dl.pop()).to.equal(6);
+      expect(dl.head.val).to.equal(4);
     });
     it('should throw error if list is empty', () => {
-
+      dl = new DoubleLinked();
+      expect(dl.pop()).to.be.instanceof(ReferenceError);
     });
   });
   describe('shift', () => {
