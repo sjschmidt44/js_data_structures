@@ -45,11 +45,20 @@ describe('DoubleLinked()', () => {
     });
   });
   describe('append()', () => {
-    it('should insert a new value at the tail of the list', () => {
-
+    it('should append a new value at the tail of the list', () => {
+      dl = new DoubleLinked();
+      dl.append(2);
+      expect(dl.tail.val).to.equal(2);
+      expect(dl.head.val).to.equal(2);
+      dl.append(1);
+      expect(dl.tail.val).to.equal(1);
+      expect(dl.head.val).to.equal(2);
+      dl.append(4);
+      expect(dl.tail.val).to.equal(4);
+      expect(dl.head.val).to.equal(2);
     });
     it('should throw error if no arg', () => {
-
+      expect(dl.insert()).to.be.instanceof(ReferenceError);
     });
   });
   describe('pop()', () => {
