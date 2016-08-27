@@ -74,10 +74,13 @@ describe('DoubleLinked()', () => {
   });
   describe('shift', () => {
     it('should remove the value at the tail of the list', () => {
-
+      dl = new DoubleLinked([2, 4, 6]);
+      expect(dl.shift()).to.equal(2);
+      expect(dl.tail.val).to.equal(4);
     });
     it('should throw error if list is empty', () => {
-
+      dl = new DoubleLinked();
+      expect(dl.shift()).to.be.instanceof(ReferenceError);
     });
   });
   describe('remove()', () => {
