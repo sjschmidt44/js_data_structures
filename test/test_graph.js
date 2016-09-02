@@ -5,7 +5,7 @@ const expect = require('chai').expect;
 
 describe('Graph Data Structure', () => {
   describe('new Graph()', () => {
-    const graph = new Graph();
+    beforeEach(() => { const graph = new Graph() });
     it('should create a new Graph object', () => {
       expect(graph).to.be.instanceof(Graph);
     });
@@ -48,6 +48,7 @@ describe('Graph Data Structure', () => {
     });
   });
   describe('addVertex()', () => {
+    const graph = new Graph()
     it('should add new vertex to graph', () => {
 
     });
