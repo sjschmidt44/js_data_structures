@@ -5,8 +5,13 @@ const expect = require('chai').expect;
 
 describe('Graph Data Structure', () => {
   describe('new Graph()', () => {
+    const graph = new Graph();
     it('should create a new Graph object', () => {
-
+      expect(graph).to.be.instanceof(Graph);
+    });
+    it('should have no verticies', () => {
+      const verticies = Object.keys(graph.verticies);
+      expect(verticies.length).to.equal(0);
     });
   });
   describe('new Graph() with args', () => {
