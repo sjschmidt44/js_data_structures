@@ -5,7 +5,7 @@ const expect = require('chai').expect;
 
 describe('Graph Data Structure', () => {
   describe('new Graph()', () => {
-    beforeEach(() => { const graph = new Graph() });
+    const graph = new Graph();
     it('should create a new Graph object', () => {
       expect(graph).to.be.instanceof(Graph);
     });
@@ -50,13 +50,17 @@ describe('Graph Data Structure', () => {
   describe('addVertex()', () => {
     const graph = new Graph()
     it('should add new vertex to graph', () => {
-
+      graph.addVertex(23);
+      const verticies = Object.keys(graph.verticies);
+      expect(verticies.length).to.equal(1);
+      expect(verticies[0]).to.equal('23');
     });
     it('should throw error if vertex already exists in graph', () => {
-
+      graph.addVertex(23);
+      expect(graph.addVertex(23)).to.be.instanceof(ReferenceError);
     });
     it('should throw error if invalid vertex value', () => {
-
+      expect(graph.addVertex([2, 3, 4])).to.be.instanceof(TypeError);
     });
   });
   describe('removeVertex()', () => {
