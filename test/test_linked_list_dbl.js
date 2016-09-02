@@ -85,13 +85,23 @@ describe('DoubleLinked()', () => {
   });
   describe('remove()', () => {
     it('should remove the first matching value from the head of the list', () => {
-
+      dl = new DoubleLinked([3, 5, 7, 9, 5, 6]);
+      expect(dl.remove(5)).to.equal(5);
+      expect(dl.head.val).to.equal(6);
+      expect(dl.head.prev.val).to.equal(9);
+      expect(dl.tail.next.val).to.equal(5);
+    });
+    it('should throw error if val not found in list', () => {
+      dl = new DoubleLinked([3, 5, 7, 9, 5, 6]);
+      expect(dl.remove(100)).to.be.instanceof(RangeError);
     });
     it('should throw error if no arg', () => {
-
+      dl = new DoubleLinked([3, 5, 7, 9, 5, 6]);
+      expect(dl.remove()).to.be.instanceof(ReferenceError);
     });
     it('should throw error if list is empty', () => {
-
+      dl = new DoubleLinked();
+      expect(dl.remove()).to.be.instanceof(ReferenceError);
     });
   });
 });
