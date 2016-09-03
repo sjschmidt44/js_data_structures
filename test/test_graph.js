@@ -67,17 +67,25 @@ describe('Graph Data Structure', () => {
   });
   describe('removeVertex()', () => {
     const graph = new Graph();
+    graph.addVertex('a');
+    graph.addVertex('b');
+    graph.addVertex('c');
+    graph.addEdge(2, 'a', 'c');
+    graph.addEdge(4, 'a', 'b');
+    graph.addEdge(3, 'b', 'c');
+    graph.removeVertex('c');
     it('should remove and return vertex from list', () => {
-
+      expect(graph.getVerticies().indexOf('c')).to.equal(-1);
     });
     it('should remove any edges pointing to vertex', () => {
-
+      expect(graph.getVerticies().indexOf('a')).to.not.equal(-1);
+      expect(graph.getVerticies().indexOf('b')).to.not.equal(-1);
     });
-    it('should throw error if edge does not exist', () => {
-
+    it('should throw error if vertex does not exist', () => {
+      expect(graph.removeVertex('f')).to.be.instanceof(ReferenceError);
     });
     it('should throw error if invalid vertex value', () => {
-
+      expect(graph.removeVertex([1, 2])).to.be.instanceof(ReferenceError);
     });
   });
   describe('addEdge()', () => {
