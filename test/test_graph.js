@@ -26,6 +26,7 @@ describe('Graph Data Structure', () => {
     });
   });
   describe('adjacent()', () => {
+    const graph = new Graph();
     it('should return an edge between two verticies if exists', () => {
 
     });
@@ -37,6 +38,7 @@ describe('Graph Data Structure', () => {
     });
   });
   describe('neighbors()', () => {
+    const graph = new Graph();
     it('should return any edges pointing to vertex', () => {
 
     });
@@ -48,7 +50,7 @@ describe('Graph Data Structure', () => {
     });
   });
   describe('addVertex()', () => {
-    const graph = new Graph()
+    const graph = new Graph();
     it('should add new vertex to graph', () => {
       graph.addVertex(23);
       const verticies = Object.keys(graph.verticies);
@@ -64,6 +66,7 @@ describe('Graph Data Structure', () => {
     });
   });
   describe('removeVertex()', () => {
+    const graph = new Graph();
     it('should remove and return vertex from list', () => {
 
     });
@@ -78,17 +81,24 @@ describe('Graph Data Structure', () => {
     });
   });
   describe('addEdge()', () => {
+    const graph = new Graph();
+    graph.addVertex('a');
+    graph.addVertex('b');
     it('should add new edge between two verticies', () => {
-
+      graph.addEdge(10, 'a', 'b');
+      expect(graph.verticies.a.b).to.equal(graph.verticies.b.a);
+      expect(graph.verticies.a.b).to.equal(10);
     });
     it('should create adjacent verticies if not provided in args', () => {
-
+      graph.addEdge(12);
     });
     it('should throw error on invalid edge val', () => {
+      console.log(graph);
 
     });
   });
   describe('removeEdge()', () => {
+    const graph = new Graph();
     it('should remove edge between two verticies', () => {
 
     });
@@ -100,9 +110,9 @@ describe('Graph Data Structure', () => {
     });
   });
   describe('breadthFirstTraversal()', () => {
-
+    const graph = new Graph();
   });
   describe('depthFirstTraversal()', () => {
-
+    const graph = new Graph();
   });
 });
