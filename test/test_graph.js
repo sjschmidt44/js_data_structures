@@ -27,8 +27,16 @@ describe('Graph Data Structure', () => {
   });
   describe('adjacent()', () => {
     const graph = new Graph();
+    graph.addVertex('a');
+    graph.addVertex('b');
+    graph.addVertex('c');
+    graph.addEdge(2, 'a', 'c');
+    graph.addEdge(4, 'a', 'b');
+    graph.addEdge(3, 'b', 'c');
     it('should return an edge between two verticies if exists', () => {
-
+      expect(graph.adjacent('a', 'b')).to.equal(4);
+      expect(graph.adjacent('a', 'c')).to.equal(2);
+      expect(graph.adjacent('c', 'b')).to.equal(3);
     });
     it('should return null if no edge exists between two verticies', () => {
 
