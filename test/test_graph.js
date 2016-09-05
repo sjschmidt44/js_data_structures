@@ -48,14 +48,21 @@ describe('Graph Data Structure', () => {
   });
   describe('neighbors()', () => {
     const graph = new Graph();
+    graph.addVertex('a');
+    graph.addVertex('b');
+    graph.addVertex('c');
+    graph.addVertex('d');
+    graph.addEdge(2, 'a', 'c');
+    graph.addEdge(4, 'a', 'b');
+    graph.addEdge(3, 'b', 'c');
     it('should return any edges pointing to vertex', () => {
-
+      expect(graph.neighbors('a')).to.equal('c,b');
     });
     it('should return null if no edge exists', () => {
-
+      expect(graph.neighbors('d')).to.equal(null);
     });
     it('should throw error if invalid vertex', () => {
-
+      expect(graph.neighbors(['a'])).to.be.instanceof(ReferenceError);
     });
   });
   describe('addVertex()', () => {
@@ -110,7 +117,6 @@ describe('Graph Data Structure', () => {
       graph.addEdge(12);
     });
     it('should throw error on invalid edge val', () => {
-      console.log(graph);
 
     });
   });
