@@ -122,8 +122,15 @@ describe('Graph Data Structure', () => {
   });
   describe('removeEdge()', () => {
     const graph = new Graph();
+    graph.addVertex('a');
+    graph.addVertex('b');
+    graph.addVertex('c');
+    graph.addEdge(2, 'a', 'c');
+    graph.addEdge(4, 'a', 'b');
+    graph.addEdge(3, 'b', 'c');
+    graph.removeEdge('a', 'b');
     it('should remove edge between two verticies', () => {
-
+      expect(graph.a.b).to.equal('undefined');
     });
     it('should throw error on invalid verticies', () => {
 
