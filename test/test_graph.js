@@ -130,13 +130,11 @@ describe('Graph Data Structure', () => {
     graph.addEdge(3, 'b', 'c');
     graph.removeEdge('a', 'b');
     it('should remove edge between two verticies', () => {
-      expect(graph.a.b).to.equal('undefined');
+      expect(graph.verticies.a).to.not.include.keys('b');
+      expect(graph.verticies.b).to.not.include.keys('a');
     });
     it('should throw error on invalid verticies', () => {
-
-    });
-    it('should throw error if no edge exists', () => {
-
+      expect(graph.removeEdge(['a'], {a: 0})).to.be.instanceof(ReferenceError);
     });
   });
   describe('breadthFirstTraversal()', () => {
