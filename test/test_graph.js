@@ -30,6 +30,7 @@ describe('Graph Data Structure', () => {
     graph.addVertex('a');
     graph.addVertex('b');
     graph.addVertex('c');
+    graph.addVertex('d');
     graph.addEdge(2, 'a', 'c');
     graph.addEdge(4, 'a', 'b');
     graph.addEdge(3, 'b', 'c');
@@ -39,10 +40,10 @@ describe('Graph Data Structure', () => {
       expect(graph.adjacent('c', 'b')).to.equal(3);
     });
     it('should return null if no edge exists between two verticies', () => {
-
+      expect(graph.adjacent('d', 'a')).to.equal(null);
     });
     it('should throw error if invalid verticies', () => {
-
+      expect(graph.adjacent(['a'], {'a': 2})).to.be.instanceof(ReferenceError);
     });
   });
   describe('neighbors()', () => {
